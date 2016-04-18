@@ -19,13 +19,13 @@ parser.add_argument('--delay', dest='delay', type=int, help='Delay (in seconds) 
 parser.add_argument('--body', dest='body', type=int, help='Custom JSON to send in the request body')
 args = parser.parse_args()
 
-if 'args.deviceId' not in locals():
+if args.deviceId is None:
     args.deviceId = 'impressionGenerator:' + ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(4))
 
-if 'args.type' not in locals():
+if args.type is None:
     args.type = 'overlay'
 
-if 'args.host' not in locals():
+if args.host is None:
     args.host = 'http://localhost:3000'
 
 url = args.host + '/' + args.type + '/' + args.videoId
